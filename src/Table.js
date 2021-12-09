@@ -12,34 +12,18 @@ const TableHeader = () => {
 };
 
 const TableBody = () => {
-	return (
-		<tbody>
-			<tr>
-				<td>Charlie</td>
-				<td>Janitor</td>
-			</tr>
-			<tr>
-				<td>Mac</td>
-				<td>Bouncer</td>
-			</tr>
-			<tr>
-				<td>Dee</td>
-				<td>Aspiring actress</td>
-			</tr>
-			<tr>
-				<td>LOL</td>
-				<td>Bartender</td>
-			</tr>
-		</tbody>
-	);
+	return <tbody />;
 };
 
 class Table extends Component {
 	render() {
+		// equivalent to characterData=this.props.characterData
+		const {characterData} = this.props;
+		// passing characterData prop into the table body
 		return (
 			<table>
 				<TableHeader />
-				<TableBody />
+				<TableBody characterData={characterData} />
 			</table>
 		);
 	}
