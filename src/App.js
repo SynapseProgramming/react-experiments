@@ -11,7 +11,7 @@ class App extends Component {
 			},
 			{
 				name: "Mac",
-				job: "Bouncer"
+				job: "LOL"
 			},
 			{
 				name: "Dee",
