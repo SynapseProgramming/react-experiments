@@ -18,25 +18,29 @@ const TableBody = props => {
 			<tr key={index}>
 				<td>{row.name}</td>
 				<td>{row.job}</td>
+				<td>
+					<button onClick={() => props.removeCharacter(index)}>yeet</button>
+				</td>
 			</tr>
 		);
 	});
 	return <tbody>{rows}</tbody>;
 };
 
-class Table extends Component {
-	render() {
-		// equivalent to characterData=this.props.characterData
-		const {characterData} = this.props;
-		// passing characterData prop into TableBody this would be passed
-		// to the lamda argument
-		return (
-			<table>
-				<TableHeader />
-				<TableBody characterData={characterData} />
-			</table>
-		);
-	}
-}
+const Table = props => {
+	// equivalent to characterData=this.props.characterData
+	const {characterData, removeCharacter} = props;
+	// passing characterData prop into TableBody this would be passed
+	// to the lamda argument
+	return (
+		<table>
+			<TableHeader />
+			<TableBody
+				characterData={characterData}
+				removeCharacter={removeCharacter}
+			/>
+		</table>
+	);
+};
 
 export default Table;
