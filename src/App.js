@@ -1,46 +1,37 @@
 import React, {Component} from "react";
-
-const TableHeader = () => {
-	return (
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Job</th>
-			</tr>
-		</thead>
-	);
-};
-
-const TableBody = () => {
-	return (
-		<tbody>
-			<tr>
-				<td>Charlie</td>
-				<td>Janitor</td>
-			</tr>
-			<tr>
-				<td>Mac</td>
-				<td>Bouncer</td>
-			</tr>
-			<tr>
-				<td>Dee</td>
-				<td>Aspiring actress</td>
-			</tr>
-			<tr>
-				<td>Dennis</td>
-				<td>Bartender</td>
-			</tr>
-		</tbody>
-	);
-};
+import Table from "./Table";
+import Form from "./Form";
 
 class App extends Component {
+	state = {
+		characters: []
+	};
+	removeCharacter = index => {
+		const {characters} = this.state;
+
+		this.setState({
+			characters: characters.filter((character, i) => {
+				return i !== index;
+			})
+		});
+	};
+	handleSubmit = character => {
+		this.setState({characters: [...this.state.characters, character]});
+	};
+
 	render() {
+		const {characters} = this.state;
+
+		// data is passed from one component to another through props(properties)
+		// In this case, the characters object is passed through the characterData prop
 		return (
-			<table>
-				<TableHeader />
-				<TableBody />
-			</table>
+			<div className="contain">
+				<Table
+					characterData={characters}
+					removeCharacter={this.removeCharacter}
+				/>
+				<Form handleSubmit={this.handleSubmit} />
+			</div>
 		);
 	}
 }
